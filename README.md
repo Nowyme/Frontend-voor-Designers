@@ -49,18 +49,21 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
   ### Je uitkomst - karakteristiek screenshot(s):
-  <img src="readme-images/spot1.png" width="375px" alt="uitomst opdracht 1">
-  <img src="readme-images/spot2.png" width="375px" alt="uitomst opdracht 1">
-  <img src="readme-images/spot3.png" width="375px" alt="uitomst opdracht 1">
+  <img src="readme-images/spot1.png" width="325px" height="240px" alt="uitomst opdracht 1">
+  <img src="readme-images/spot2.png" width="325px" height="240px" alt="uitomst opdracht 1">
+  <img src="readme-images/spot3.png" width="325px" height="240px" alt="uitomst opdracht 1">
 
   ### Dit ging goed/Heb ik geleerd: 
-  Korte omschrijving met plaatje(s)
+  Werken met pseudo elementen zoals ::before & ::after gingen goed, ik heb veel geleerd hoe je dat kan gebruiker en animeren.
+  Daarnaast vond ik gradient ook interresant om verschillende patronen te maken. 
 
   <img src="readme-images/spot1.png" width="375px" alt="top">
 
 
   ### Dit was lastig/Is niet gelukt:
-  Korte omschrijving met plaatje(s)
+  Ik heb de parent geanimeerd alleen de pseudo elementen gaan ook animeren alleen dat wil ik niet. Ik heb geprobeerd met een tegenovergestelde animatie   proberen te cancellen maar dat is deels gelukt. omdat ik twee animatie hebt bij de pseudo elementen werkt mijn tweede animatie niet. 
+  
+  Daarnaast had ik ook geëxperimenteerd met underline wavy, dat werkt wel alleen voor mijn opdracht is dat moeilijk/niet mogelijk.
 
   <img src="readme-images/dummy-plaatje.svg" width="375px" alt="bummer">
 </details>
