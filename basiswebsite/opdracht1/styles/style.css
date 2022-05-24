@@ -42,8 +42,47 @@ summary {
 :root {
   /* startje */
   --color-text: #111;
+  --color-text-white: #FFFFFF;
   --color-background: #eee;
+  --spotify-green: rgb(30, 215, 96);
+  --spotify-green-opacity: rgb(30, 215, 96, .2);
+  --spotify-black: rgb(25, 20, 20);
+  --gradient: linear-gradient(45deg,
+      #eee,
+      rgb(29, 185, 84, .2));
+  --color-boxshadow: #111;
+  --color-balk: rgb(55, 60, 199);
+
+  --bal-maat: 1em;
+  --cd-maat: 1.5em;
+  --cd-maat-klein: .53em;
+  --bg-duration: 10s;
+  --disk-duration: 5s;
+  --dot-duration: 10s;
+  --pulse-duration: 2s;
+  --bouncy-duration: 2s;
+  --pulse-delay: 1s;
+
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: rgb(30, 215, 96);
+    --gradient: linear-gradient(45deg,
+        rgb(29, 50, 38),
+        rgb(19, 19, 19));
+    --color-boxshadow: #FFFFFF;
+
+    --bg-duration: 3s;
+    --disk-duration: .6s;
+    --dot-duration: 1s;
+    --pulse-duration: .6s;
+    --pulse-delay: .3s;
+    --bouncy-duration: .6s;
+
+  }
+}
+
 
 
 
@@ -53,77 +92,71 @@ summary {
 /* JOUW STYLING */
 /****************/
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', 'GothamMedium', sans-serif;
   color: var(--color-text);
-  background-color: var(--color-background);
+  background-image: var(--gradient);
+  background-size: 300%;
   position: relative;
   height: 100vh;
 
+  animation: bg-animation var(--bg-duration) infinite alternate paused;
 }
 
-/* jouw code */
 
 
+
+/****************/
+/* H1 centreren */
+/****************/
 h1 {
-
   position: absolute;
-  margin: 0;
   top: 50%;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-  box-shadow: 0 calc(2em /8) 0 calc(2em/ -16) black;
-
-  z-index: 10;
-
-
+  box-shadow: 0 calc(2em /8) 0 calc(2em/ -16) var(--color-boxshadow);
 
 }
+
+/* player progress balk */
 
 h1::before {
-
   content: "";
   position: absolute;
-
-
-
-
-  bottom: calc(0em - 10px/2);
-
+  bottom: calc(0em - 14px/2);
   width: 0;
   height: 10px;
-  background-color: rgb(55, 60, 199);
 
-  transition: 1s;
-  animation: grow 5s linear infinite alternate paused;
+  border-radius: 10px;
+  background-color: var(--color-balk);
+  border: var(--color-boxshadow) 1px solid;
+
+
+  animation: grow var(--dot-duration) linear infinite alternate paused;
   animation-delay: .5s;
 }
 
 
-
-
-
+/* player progress dot */
 
 h1::after {
-  --balMaat: .9em;
   content: "";
   position: absolute;
+  left: -1px;
+  bottom: calc(0% - var(--bal-maat) / 2);
 
-  left: 0;
-
-
-  bottom: calc(0% - var(--balMaat) / 2);
-
-  width: var(--balMaat);
+  width: var(--bal-maat);
   aspect-ratio: 1/1;
-
-  background-color: rgb(0, 0, 0);
+  background-color: var(--color-boxshadow);
   border-radius: 50%;
-  transition: 1s;
-  animation: heen 5s linear infinite alternate paused;
+
+  animation: slide var(--dot-duration) linear infinite alternate paused;
   animation-delay: .5s;
 }
 
+/****************/
+/* span responsive op beeldschermgrote */
+/****************/
 span {
 
   font-size: 10vw;
@@ -131,261 +164,193 @@ span {
 }
 
 
+/****************/
+/* spring letters */
+/****************/
 
-h1 span:first-of-type {
+span:first-of-type,
+span:nth-of-type(2),
+span:nth-of-type(4),
+span:nth-of-type(5),
+span:nth-of-type(6),
+span:nth-of-type(7) {
+  display: inline-block;
+  animation: bouncy-animation var(--bouncy-duration) infinite paused;
+}
+
+
+span:first-of-type {
   text-transform: uppercase;
-
+  animation-delay: .6s;
 }
 
-h1 span::before {
-  content: "";
-  width: 100%;
-  color: #0bf;
-  overflow: hidden;
-  /* animation: animate 10s linear infinite ; */
-
+span:nth-of-type(2) {
+  animation-delay: .4s;
 }
 
-@keyframes animate {
-  0% {
-    width: 0;
-  }
-
-  100% {
-    width: 100%;
-  }
+span:nth-of-type(4) {
+  animation-delay: .4s;
 }
 
-/* h1 span:nth-of-type(3){
-	background-color: aquamarine;
-	height: 1.7em;
-  width: 1.7em;
-	display: inline-block;
-	border-radius: 50%;
-	margin: .2em;
-	top: -.1em;
-	position: relative;
-	text-align: center;
+span:nth-of-type(5) {
+  animation-delay: .6s;
+}
 
-	animation: rotate 1.5s linear infinite; 
-display: inline-block;
-} */
+span:nth-of-type(6) {
+  animation-delay: .7s;
+}
+
+span:nth-of-type(7) {
+  animation-delay: .8s;
+}
+
+/****************/
+/* pulse animatie */
+/****************/
+
+span:nth-of-type(2)::before,
+span:nth-of-type(2)::after {
+  content: '';
+  position: absolute;
+  top: 12%;
+  left: 173%;
+  z-index: -10;
+  width: 1em;
+  height: 1em;
+  background-color: var(--spotify-green-opacity);
+  border: 2px solid var(--spotify-green-opacity);
+  border-radius: 50%;
+
+  animation: pulse var(--pulse-duration) linear infinite forwards paused;
+}
+
+span:nth-of-type(2)::before {
+  animation-delay: var(--pulse-delay);
+}
+
+
+/****************/
+/* platenspeler */
+/****************/
 
 h1 span:nth-of-type(3) {
-
   text-transform: uppercase;
-
   margin: .5em;
-
-  animation: rotate 5s linear infinite paused;
   display: inline-block;
-  color: rgb(255, 255, 255);
+  color: var(--color-text-white);
 
+  animation: rotate var(--disk-duration) linear infinite paused;
   animation-delay: .5s;
 }
 
-
-
-
+/* platenspeler gradient */
 h1 span:nth-of-type(3)::before {
-
-  --balMaat: 1.5em;
   content: "";
-
   position: absolute;
-
-  left: calc(50% - var(--balMaat) / 2);
-  top: calc(50% - var(--balMaat) / 2);
-  bottom: 100%;
-
+  left: calc(50% - var(--cd-maat) / 2);
+  top: calc(50% - var(--cd-maat) / 2);
   z-index: -1;
-  width: var(--balMaat);
+
+  width: var(--cd-maat);
   aspect-ratio: 1/1;
-
-
   border-radius: 50%;
 
-
-  background-image: conic-gradient(rgb(30, 215, 96) 60deg,
-      rgb(25, 20, 20)60deg 180deg,
-
-      rgb(30, 215, 96) 180deg 240deg,
-      rgb(25, 20, 20)240deg 300deg);
-
+  background-image: conic-gradient(var(--spotify-green) 60deg,
+      var(--spotify-black) 60deg 180deg,
+      var(--spotify-green)180deg 240deg,
+      var(--spotify-black)240deg 300deg);
 }
 
 
-
+/* platenspeler middelste stukje */
 h1 span:nth-of-type(3)::after {
-  --balMaat: .55em;
   content: "";
   position: absolute;
-  left: calc(50% - var(--balMaat) / 2);
-  top: calc(50% - var(--balMaat) / 2);
-  border-radius: 50%;
-  width: var(--balMaat);
-  aspect-ratio: 1/1;
-  background: rgb(30, 215, 96);
   z-index: -1;
-
-
+  left: calc(50% - var(--cd-maat-klein) / 2);
+  top: calc(50% - var(--cd-maat-klein) / 2);
+  border-radius: 50%;
   border: 10px solid rgba(0, 0, 0, 0.1);
-
+  width: var(--cd-maat-klein);
+  aspect-ratio: 1/1;
+  background: var(--spotify-green);
 }
-
-
-
 
 h1 span:nth-of-type(4) {
-  margin-left: .2em;
+  margin-left: .3em;
 }
 
+
+
+
+
+
+/* platenspeler naald 1/2  */
 h1 span:nth-of-type(4)::before {
   content: "";
   position: absolute;
-  top: .4em;
-  right: 37%;
+  top: 0;
+  left: -60%;
 
   width: .1em;
   height: 1.2em;
-  box-shadow: 5px 3px rgb(46, 46, 46);
+  box-shadow: 5px 3px var(--color-boxshadow);
   border-radius: 10px;
-  background-color: rgb(55, 60, 199);
+  background-color: var(--color-balk);
   transform-origin: bottom right;
   transition: transform .15s ease-in-out;
 
+
 }
 
-
+/* platenspeler naald rotate */
 h1:hover span:nth-of-type(4)::before {
 
   transform: rotate(-33deg);
 
 }
 
-
-
+/* platenspeler naald 2/2 */
 h1 span:nth-of-type(4)::after {
   content: "";
   position: absolute;
-  bottom: 22%;
-  right: 35.2%;
-
+  bottom: -10%;
+  left: -85%;
   width: .3em;
   height: .3em;
-  box-shadow: 5px 3px rgb(46, 46, 46);
+  box-shadow: 5px 3px var(--color-boxshadow);
   border-radius: 50%;
-  background-color: rgb(55, 60, 199);
-
-
+  background-color: var(--color-balk);
 }
 
+
+/****************/
+/* keyframes animatie */
+/****************/
+
+/* platenspeler draai */
 @keyframes rotate {
   100% {
-    /* mijn code hier */
-
     transform: rotate(360deg);
   }
 
 }
 
-/* @keyframes heen {
-  100%{
-		transform: translateX(3em);
-	}
-} */
-
-@keyframes heen {
-  0% {
-    /* jouw code hier */
-    left: 0;
-  }
-
+/* progress dot */
+@keyframes slide {
   100% {
-    /* jouw code hier */
-    left: calc(100% - var(--balMaat));
+    left: calc(100% - var(--bal-maat));
   }
 }
 
+/* progress balk */
 @keyframes grow {
-  0% {
-    width: 0;
-  }
-
   100% {
     width: 100%;
   }
 }
 
-@keyframes cdPlayer {
-
-  100% {
-
-    transform: rotate(-40deg);
-  }
-}
-
-
-
-
-
-h1 span:first-of-type {
-  animation-name: bouncy-animation;
-  animation-duration: 2s;
-  animation-delay: .5s;
-  animation-iteration-count: infinite;
-  animation-play-state: paused;
-
-  display: inline-block;
- 
-}
-h1 span:nth-of-type(2) {
-  
-  animation-delay: .4s;
-  animation-iteration-count: infinite;
-  animation-play-state: paused;
-  
-  display: inline-block;
-  animation: bouncy-animation 2s infinite ;
-}
-h1 span:nth-of-type(2)::after, h1 span:nth-of-type(2)::before {
-  
- 
-  animation-iteration-count: infinite;
-  animation-play-state: paused;
-  
-  display: inline-block;
-  animation: bouncy-animationRev 2s infinite;
-}
-
-
-h1 span:nth-of-type(2)::before,
-h1 span:nth-of-type(2)::after {
-  content: '';
-  position: absolute;
-
-  top: 27.5%;
-  left: 34.5%;
-
-  border: 2px solid #33ff00;
-  border-radius: 50%;
-  animation: pulse 2s linear infinite paused;
-  z-index: -10;
-  width: 1em;
-  height: 1em;
-  
-
-  
-}
-
-h1 span:nth-of-type(2)::before {
-  animation-delay: 1s;
-
-
-}
-
-
-
+/* pulse animatie */
 @keyframes pulse {
   0% {
     transform: scale(0.7);
@@ -395,50 +360,75 @@ h1 span:nth-of-type(2)::before {
     transform: scale(8);
     opacity: 0;
   }
+
 }
 
-
-
-
-
-
+/* spring animatie */
 @keyframes bouncy-animation {
-  0%  { 
-    transform: translateY(0); 
+  0% {
+    transform: translateY(0);
     animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
   }
-  25%  { 
-    transform: translateY(-.3em); 
+
+  25% {
+    transform: translateY(-.2em);
     animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
   }
-  50%, 100% { 
-    transform: translateY(0); 
+
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+
+  }
+
+  75% {
+    transform: translateY(-.2em);
+    animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  }
+
+  100% {
+    transform: translateY(0);
+
   }
 }
 
-@keyframes bouncy-animationRev {
-  0%  { 
-    transform: translateY(0); 
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+/* gradient animatie */
+@keyframes bg-animation {
+  0% {
+    background-position: left;
   }
-  25%  { 
-    transform: translateY(.3em); 
-    animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
-  }
-  50%, 100% { 
-    transform: translateY(0); 
+
+  100% {
+    background-position: right;
   }
 }
 
 
+/****************/
+/* hover play animatie */
+/****************/
+
+body:hover,
 h1:hover::before,
 h1:hover::after,
 h1:hover span,
 h1:hover span::before,
 h1:hover span::after,
 h1:hover span:first-of-type {
-  /* jouw code hier */
-
   animation-play-state: running;
 
+}
+
+/* animatie uit */
+@media (prefers-reduced-motion) {
+
+  body:hover,
+  h1:hover::before,
+  h1:hover::after,
+  h1:hover span,
+  h1:hover span::before,
+  h1:hover span::after,
+  h1:hover span:first-of-type {
+    animation-play-state: paused;
+  }
 }
