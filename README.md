@@ -14,9 +14,10 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
 ## Bronnenlijst
-  1. -bron 1-
-  2. -bron 2-
-  3. -[Google fonts]([opdracht1/index.html](https://fonts.google.com/?query=montserrat))-
+  1. -[Devolper mozilla](https://developer.mozilla.org/en-US/docs/Web/CSS)-
+  2. -[Spotify design guide](https://developer.spotify.com/documentation/general/design-and-branding/)-
+  3. -[Google fonts](https://fonts.google.com/?query=montserrat)-
+  4. -[Spotify afbeelding](https://commons.wikimedia.org/wiki/File:Spotify_logo_without_text.svg)-
 
 
 
