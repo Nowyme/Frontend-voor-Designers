@@ -1,5 +1,5 @@
 # Procesverslag
-**Auteur:** -jouw naam-
+**Auteur:** Nowy Meepho
 
 **De opdrachten:** [opdracht 1](opdracht1/index.html) en [opdracht 2](opdracht2/index.html)
 
@@ -16,7 +16,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 ## Bronnenlijst
   1. -bron 1-
   2. -bron 2-
-  3. -...-
+  3. -[Google fonts]([opdracht1/index.html](https://fonts.google.com/?query=montserrat))-
 
 
 
