@@ -28,15 +28,15 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
   ### Je storyboard:
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="storyboard voor opdracht 1">
+  <img src="readme-images/storyboardfvd.jpg" width="375px" alt="storyboard voor opdracht 1">
 
 
   ### Je ambitie: 
   Aan deze technieken/punten wil ik werken:
-  - punt 1
-  - punt 2
-  - nog een punt
-  - ...
+  - Pseudo elementen ::before & ::after
+  - Keyframes & animatie
+  - CSS custom properties
+  - Werken met gradient
  
 </details>
 
@@ -49,13 +49,14 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
   ### Je uitkomst - karakteristiek screenshot(s):
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="uitomst opdracht 1">
-
+  <img src="readme-images/spot1.png" width="375px" alt="uitomst opdracht 1">
+  <img src="readme-images/spot2.png" width="375px" alt="uitomst opdracht 1">
+  <img src="readme-images/spot3.png" width="375px" alt="uitomst opdracht 1">
 
   ### Dit ging goed/Heb ik geleerd: 
   Korte omschrijving met plaatje(s)
 
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="top">
+  <img src="readme-images/spot1.png" width="375px" alt="top">
 
 
   ### Dit was lastig/Is niet gelukt:
@@ -73,15 +74,12 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
   ### Je ontwerp:
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="ontwerp opdracht 2">
+  <img src="readme-images/storyboardfvd.jpg" width="375px" alt="ontwerp opdracht 2">
 
 
   ### Je ambitie: 
   Aan deze technieken/punten wil ik werken:
-  - punt 1
-  - punt 2
-  - nog een punt
-  - ...
+  
 </details>
 
 
