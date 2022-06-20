@@ -15,7 +15,12 @@ Nb. De standaardstructuur en de spartaanse opmaak van de README.md zijn helemaal
 
 Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard open zetten. Fijn om dat steeds voor de relevante stuk(ken) te doen.
 
-
+## Table of Content
+* :building_construction: [Over dit project](#Project)
+* :+1: [Opdarcht1 plan](#plan1)
+* :gear: [Opdarcht1 reflectie](#reflectie1)
+* :raising_hand: [Opdracht2 plan](#Contact)
+* :lock: [Opdracht2 test](#License)
 
 ## Bronnenlijst :books:
   1. -[Devolper mozilla](https://developer.mozilla.org/en-US/docs/Web/CSS)-
@@ -24,6 +29,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   4. -[Spotify afbeelding](https://commons.wikimedia.org/wiki/File:Spotify_logo_without_text.svg)-
 
 
+<a name="plan1"/>
 
 ## Opdracht 1 plan :memo:
 
@@ -44,7 +50,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
  
 </details>
 
-
+<a name="reflectie1"/>
 
 ## Opdracht 1 reflectie :repeat:
 
@@ -108,7 +114,12 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   Cards kunnen niet omdraaien wanneer je erop klikt.
 
   #### oplossing:
-  Ik heb met hulp de eventlisterner in mijn API foreach gezet zodat hij het kan zien. Dit komt omdat JS al laad voordat de API data worden in geladen.
+  Ik heb met hulp de eventlisterner in mijn API foreach gezet zodat hij het kan zien. Dit komt omdat JS al laad voordat de API data worden in geladen waardoor het niet werkte.
+  ```
+  const buttonSlide = list.querySelector('li:last-of-type');
+  
+  buttonSlide.addEventListener('click', draaiPhoenixOm);
+  ```
 
 
 
@@ -120,11 +131,61 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
 
- ### Bevinding 2:
-  Intersection observer
+ ### Bevinding 3:
+  Intersection observer.
 
   #### oplossing:
   Intersection observer werkte eerst ook niet en dat kwam ook omdat hij het lijstje niet ziet. Ik heb dus hetzelfde opgelost als met de flipcard. Ik heb de hele functie in de API gezet. Dit vind ik trouwens heel lelijk om te doen maar omdat we niet een template engine werken, weet ik niet zo goed hoe het anders moet.
+  
+  ```
+  const options = {
+        root: null,
+        threshold: 0.4,
+        rootMargin: '0px',
+      };
+
+      const observer = new IntersectionObserver(function (entries, observer) {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle('slide-top', entry.isIntersecting);
+        });
+      }, options);
+
+      cards.forEach((card) => {
+        observer.observe(card);
+        card.classList.add('hide');
+      });
+    });
+  ```
+  
+   ### Bevinding 4:
+  Ik kon geen data selecteren uit een API.
+
+  #### oplossing:
+  Ik moest data uit de API halen maar ik wist niet hoe je een data moet selecteren met een `-` erin zoals `file-name`. Ik heb eerst geprobeerd om de data te formateren in een array met `map()` maar dat ook geen succes. Ik heb uiteindelijk gewoon zitten experimenteren en daarna was het toch gelukt. Ik heb gelost door dit te typen:
+  
+  ```
+   const img = aArt.image_uri;
+   const artDesc = aArt['museum-desc'];
+   const artPrice = aArt['buy-price'];
+  ```
+
+    ### Bevinding 5:
+  Card drag and drop ziet raar uit
+
+  #### oplossing:
+ Ik voor mijn feature dat je cards kan drag and drop op het scherm alleen dat werkt wel maar het ziet raar uit omdat mijn card bestaat uit een achterkant en voorkant. Wanneer ik een card sleep dan zie ik de achterkant. Ik weet niet hoe je dit moet oplossen. Ik heb dit als code:
+  ```
+  new Sortable(allesLijst, {
+  group: 'shared', // set both lists to same group
+  animation: 150,
+});
+
+new Sortable(favoLijst, {
+  group: 'shared',
+  animation: 150,
+});
+
+  ```
 
 </details>
 
