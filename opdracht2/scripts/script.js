@@ -20,9 +20,10 @@ function getArt() {
       const artDesc = aArt['museum-desc'];
       const artPrice = aArt['buy-price'];
       const aArtHTML = `<li>
-					<section  class="backface-visibility">
-                    <div>
+					
+                    
                     <section>
+                  <button type="button" >i</button>
 							<h2>${name}</h2>
                             <img src="${img}" alt="${name}">
                             <img src="images/bells.png" alt="bells"><p>${artPrice}</p>
@@ -31,16 +32,16 @@ function getArt() {
                     <h3>Description</h3>
 						<p>${artDesc}</p>
                     </section>
-                    </div>
-					</section>
+                    
+					
 
         </li>`;
 
       list.insertAdjacentHTML('beforeend', aArtHTML);
 
-      const dePhoenix = list.querySelector('li:last-of-type');
+      const buttonSlide = list.querySelector('li:last-of-type');
 
-      dePhoenix.addEventListener('click', draaiPhoenixOm);
+      buttonSlide.addEventListener('click', draaiPhoenixOm);
 
       const cards = document.querySelectorAll('li');
 
@@ -95,7 +96,7 @@ const openButton = document.querySelector('button');
 const form = document.querySelector('form');
 
 function slideLeft() {
-  form.classList.toggle('slide');
+  this.classList.toggle('slide');
 }
 
 openButton.addEventListener('click', slideLeft);
@@ -126,3 +127,19 @@ function closeNav() {
   document.querySelector('form button').style.marginLeft = '0';
   document.querySelector('form button:last-of-type').style.marginLeft = '0';
 }
+
+var favoLijst = document.querySelector('main section ul');
+var allesLijst = document.querySelector('form ul');
+
+/**********************/
+/* DRAGGEN EN DROPPEN */
+/**********************/
+new Sortable(allesLijst, {
+  group: 'shared', // set both lists to same group
+  animation: 150,
+});
+
+new Sortable(favoLijst, {
+  group: 'shared',
+  animation: 150,
+});

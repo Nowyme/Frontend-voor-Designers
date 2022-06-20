@@ -76,7 +76,7 @@ body > ul li {
   box-shadow: rgb(249, 214, 191, 0.5) 0px 8px 24px;
   /* box-shadow: rgb(130, 204, 163, 0.5) 0px 8px 24px; */
   background-color: var(--blob-color);
-  /* background-color: rgb(130, 204, 163, 0.5); */
+  background-color: rgb(130, 204, 163, 0.5);
   animation: blob-animation 40s linear infinite;
 }
 
@@ -159,23 +159,6 @@ h1 {
 /****************/
 /* main stylen */
 /****************/
-main > section {
-  /* width: 100vw; */
-  display: flex;
-  height: 90vh;
-}
-
-main > section {
-  background-color: rgb(63, 142, 110);
-  height: 10em;
-  width: 100vw;
-  transition: margin-left 0.5s;
-  position: absolute;
-  z-index: 1;
-}
-h2::first-letter {
-  text-transform: capitalize;
-}
 
 form {
   max-width: 40em;
@@ -184,7 +167,9 @@ form {
   height: 90vh;
   overflow: hidden;
   overflow-y: scroll;
-  /* background-color: white; */
+
+  background-color: rgb(255, 255, 255, 0.4);
+
   border-radius: 10px;
   position: fixed;
   z-index: 1;
@@ -205,7 +190,7 @@ form::-webkit-scrollbar {
   margin-left: 50px;
 }
 
-form button {
+form > button {
   height: 50%;
   width: 3em;
   transition: margin-left 0.5s;
@@ -215,6 +200,7 @@ form button {
   left: 0;
   top: 10;
   background-color: var(--color-text);
+  border-radius: 5px;
 }
 form button:last-of-type {
   top: 60%;
@@ -390,50 +376,238 @@ p {
   text-align: center;
 } */
 
-form ul {
+main ul {
   display: grid;
 
-  grid-gap: 1.5rem;
+  grid-gap: 1.5em;
   grid-auto-rows: 1fr;
-  padding: 3rem;
-  background: whitesmoke;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-}
-form ul li {
-  perspective: 40rem;
-  display: flex;
-  transform-style: preserve-3d;
-  transition: var(--time) transform;
+  padding: 1rem;
+  background: white;
 
-  display: flex;
-  transition: z-index, transform calc(var(--time) / 4);
-  transition-delay: var(--time), 0s;
-  text-decoration: none;
-  color: inherit;
-  z-index: 0;
+  grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
 }
-form ul li:hover {
+main ul li {
+  transition: var(--time) transform;
+  list-style-type: none;
+  width: 100%;
+  height: 100%;
+  transition: z-index, transform calc(var(--time) / 4);
+  max-height: 25em;
+  transform-style: preserve-3d;
+  display: flex;
+  padding: 0.5em;
+  transition: 0.6s;
+
+  border-radius: 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+  perspective: 40rem;
+
+  transform: translateY(2em);
+}
+
+li.sortable-ghost {
+  cursor: grabbing;
+}
+main ul li:hover {
   transition-delay: 0s;
   z-index: 1;
 }
-form ul li:hover,
-form ul li:focus {
-  transform: rotateX(-180deg);
+
+h2::first-letter {
+  text-transform: capitalize;
 }
 
-form ul li section:first-of-type,
-form ul li section:last-of-type {
+/* form ul li:hover,
+form ul li:focus {
+  transform: perspective(100em) rotatey(180deg);
+} */
+
+main ul li section:first-of-type,
+main ul li section:last-of-type {
   backface-visibility: hidden;
   min-width: 100%;
+  cursor: grab;
+  position: relative;
 
-  display: flex;
   align-items: center;
   background-color: white;
   box-sizing: border-box;
-  padding: 1.5rem;
+  padding: 1em;
   border-radius: 0.25rem;
+
+  justify-content: center;
+  align-items: center;
+
+  background-image: linear-gradient(30deg, transparent, rgb(125, 223, 192) 60%),
+    repeating-linear-gradient(
+      -45deg,
+      rgb(232, 234, 203) 0% 2%,
+      rgb(224, 211, 180) 2% 3%,
+      rgb(143, 188, 159) 1% 4%
+    );
+  backface-visibility: hidden;
 }
 
-form ul li section:last-of-type {
-  transform: rotateX(-180deg) translate(-100%, 0);
+main ul li section:last-of-type {
+  /* transform: rotatey(-180deg) translate(-100%, 0); */
+
+  background-color: rgb(214, 214, 214);
+  border-radius: 0.5em;
+  position: absolute;
+
+  backface-visibility: hidden;
+  /* transform: rotatey(180deg) translateX(17.3em); */
+  transform: rotatey(180deg);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgb(244, 192, 139) 0 0.2em,
+    rgb(246, 203, 162) 0.2em 1em
+  );
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+main li section:last-of-type p {
+  font-family: eenfont, sans-serif;
+  background-color: white;
+  border-radius: 10px;
+  padding: 0.7em;
+}
+
+main li section:last-of-type h3 {
+  font-size: 1.5em;
+  margin-bottom: -0.2em;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.slide-top {
+  opacity: 1;
+  transform: translateY(0);
+  /* transition: 0.5s ease-in; */
+}
+main li.erIsOpMijGeklikt {
+  transform: perspective(100em) rotatey(180deg);
+}
+@media only screen and (max-width: 600px) {
+  form ul {
+    display: grid;
+
+    grid-gap: 1.5em;
+
+    padding: 1rem;
+    background: white;
+
+    grid-template-columns: repeat(auto-fill, minmax(19em, 1fr));
+  }
+
+  main ul li {
+    transition: var(--time) transform;
+    list-style-type: none;
+    width: 93vw;
+    height: 100%;
+    transition: z-index, transform calc(var(--time) / 4);
+
+    transform-style: preserve-3d;
+    display: flex;
+    padding: 0.7em;
+    transition: 0.6s;
+
+    border-radius: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+      rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+    perspective: 40rem;
+
+    transform: translateY(2em);
+  }
+}
+main li section:first-of-type > button {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  width: 2em;
+  aspect-ratio: 1/1;
+  font-size: 1em;
+  transition: 0.3s;
+  font-weight: 400;
+}
+
+main li section:first-of-type > button:hover {
+  background-color: #d5e9e3a1;
+  border: 2px solid var(--h1-color);
+  transform: scale(1.4);
+}
+
+main section:first-of-type > img:first-of-type {
+  position: relative;
+  left: 10%;
+  aspect-ratio: 1/1;
+  height: 50%;
+}
+main section:first-of-type > img:last-of-type {
+  position: relative;
+
+  height: 10%;
+  aspect-ratio: 1/1;
+}
+
+main section:first-of-type p {
+  position: relative;
+}
+
+/****************/
+/* main mijn lijstje stylen*/
+/****************/
+
+main > section {
+  background-color: rgb(1, 124, 116, 0.2);
+  height: 81vh;
+
+  transition: margin-left 0.5s;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+main > section h2 {
+  position: relative;
+  top: 1.2em;
+  color: white;
+  font-size: 2em;
+  text-align: center;
+}
+main > section ul {
+  overflow: hidden;
+  overflow-y: scroll;
+  width: 90vw;
+  position: relative;
+  align-content: center;
+  background-color: transparent;
+  border-radius: 10px;
+  position: fixed;
+  overflow-y: hidden;
+}
+ul:empty::after {
+  content: 'Sleep je Animal Crossing Art collectie naar dit lijstje';
+  position: relative;
+  top: 1.2em;
+  height: 50em;
+  font-size: 1.2em;
+  text-align: center;
+}
+main > section ul li {
+  background-color: white;
 }
