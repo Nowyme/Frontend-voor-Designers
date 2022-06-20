@@ -16,11 +16,12 @@ Nb. De standaardstructuur en de spartaanse opmaak van de README.md zijn helemaal
 Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard open zetten. Fijn om dat steeds voor de relevante stuk(ken) te doen.
 
 ## Table of Content
-* :building_construction: [Over dit project](#Project)
-* :+1: [Opdarcht1 plan](#plan1)
-* :gear: [Opdarcht1 reflectie](#reflectie1)
-* :raising_hand: [Opdracht2 plan](#Contact)
-* :lock: [Opdracht2 test](#License)
+
+* 🗒️ [Opdarcht1 plan](#plan1)
+* 🔄 [Opdarcht1 reflectie](#reflectie1)
+* 🗒️ [Opdracht2 plan](#plan2)
+* 🧪 [Opdracht2 test](#test2)
+* 🔄 [Opdracht2 reflectie](#reflectie2)
 
 ## Bronnenlijst :books:
   1. -[Devolper mozilla](https://developer.mozilla.org/en-US/docs/Web/CSS)-
@@ -78,7 +79,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   <img src="readme-images/spot7.png" width="325px" alt="uitomst opdracht 1">
 </details>
 
-
+<a name="plan2"/>
 
 ## Opdracht 2 plan
 
@@ -87,9 +88,19 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
   ### Je ontwerp:
-  <img src="readme-images/storyboardfvd.jpg" width="375px" alt="ontwerp opdracht 2">
+  ### desktop:
+  
+  <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/MacBook%20Pro%2014_%20-%201.png" width="375px" alt="ontwerp opdracht 2">
+  
+   <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/MacBook%20Pro%2014_%20-%201.png" width="375px" alt="ontwerp opdracht 2">
 
-
+### mobile:
+   <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/13%20Pro%20-%201.png" height="375px" alt="ontwerp opdracht 2">
+  
+   <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/13%20Pro%20-%202.png" height="375px" alt="ontwerp opdracht 2">
+  
+  <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/13%20Pro%20-%203.png" height="375px" alt="ontwerp opdracht 2">
+  
   ### Je ambitie: 
   Aan deze technieken/punten wil ik werken:
   - Werken met public API
@@ -100,6 +111,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 </details>
 
 
+<a name="test2"/>
 
 ## Opdracht 2 test
 
@@ -190,6 +202,7 @@ new Sortable(favoLijst, {
 </details>
 
 
+<a name="reflectie2"/>
 
 ## Opdracht 2 reflectie
 
