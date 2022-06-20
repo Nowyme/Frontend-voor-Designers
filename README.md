@@ -106,12 +106,12 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 <details>
   <summary>uitwerken na testen (week 7)</summary>
 
-  Neem minimaal 5 bevindingen op:
+  
 
 
 
   ### Bevinding 1:
-  Cards kunnen niet omdraaien wanneer je erop klikt.
+  * Cards kunnen niet omdraaien wanneer je erop klikt.
 
   #### oplossing:
   Ik heb met hulp de eventlisterner in mijn API foreach gezet zodat hij het kan zien. Dit komt omdat JS al laad voordat de API data worden in geladen waardoor het niet werkte.
@@ -124,7 +124,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
   ### Bevinding 2:
-  Scrollen door de cards lijstjes. 
+  * Scrollen door de cards lijstjes. 
 
   #### oplossing:
   Scrollen door de lijstjes lukte alleen je scrolt de pagina maar dat ik wil dus niet ik wil dat je door een lijstje scrolt zonder dat je de pagina scrolt. Dit heb ik opgelost door overflow: hidden en overflow-y: scroll.
@@ -132,7 +132,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
  ### Bevinding 3:
-  Intersection observer.
+  * Intersection observer.
 
   #### oplossing:
   Intersection observer werkte eerst ook niet en dat kwam ook omdat hij het lijstje niet ziet. Ik heb dus hetzelfde opgelost als met de flipcard. Ik heb de hele functie in de API gezet. Dit vind ik trouwens heel lelijk om te doen maar omdat we niet een template engine werken, weet ik niet zo goed hoe het anders moet.
@@ -158,7 +158,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   ```
   
    ### Bevinding 4:
-  Ik kon geen data selecteren uit een API.
+  * Ik kon geen data selecteren uit een API.
 
   #### oplossing:
   Ik moest data uit de API halen maar ik wist niet hoe je een data moet selecteren met een `-` erin zoals `file-name`. Ik heb eerst geprobeerd om de data te formateren in een array met `map()` maar dat ook geen succes. Ik heb uiteindelijk gewoon zitten experimenteren en daarna was het toch gelukt. Ik heb gelost door dit te typen:
@@ -169,8 +169,8 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
    const artPrice = aArt['buy-price'];
   ```
 
-    ### Bevinding 5:
-  Card drag and drop ziet raar uit
+  ### Bevinding 5:
+  * Card drag and drop ziet raar uit
 
   #### oplossing:
  Ik voor mijn feature dat je cards kan drag and drop op het scherm alleen dat werkt wel maar het ziet raar uit omdat mijn card bestaat uit een achterkant en voorkant. Wanneer ik een card sleep dan zie ik de achterkant. Ik weet niet hoe je dit moet oplossen. Ik heb dit als code:
