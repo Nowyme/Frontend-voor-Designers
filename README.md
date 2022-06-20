@@ -1,3 +1,7 @@
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+
 # Procesverslag :page_facing_up:
 **Auteur:** Nowy Meepho :heart_eyes_cat:
 
@@ -11,7 +15,13 @@ Nb. De standaardstructuur en de spartaanse opmaak van de README.md zijn helemaal
 
 Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard open zetten. Fijn om dat steeds voor de relevante stuk(ken) te doen.
 
+## Table of Content
 
+* 🗒️ [Opdarcht1 plan](#plan1)
+* 🔄 [Opdarcht1 reflectie](#reflectie1)
+* 🗒️ [Opdracht2 plan](#plan2)
+* 🧪 [Opdracht2 test](#test2)
+* 🔄 [Opdracht2 reflectie](#reflectie2)
 
 ## Bronnenlijst :books:
   1. -[Devolper mozilla](https://developer.mozilla.org/en-US/docs/Web/CSS)-
@@ -20,6 +30,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   4. -[Spotify afbeelding](https://commons.wikimedia.org/wiki/File:Spotify_logo_without_text.svg)-
 
 
+<a name="plan1"/>
 
 ## Opdracht 1 plan :memo:
 
@@ -40,7 +51,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
  
 </details>
 
-
+<a name="reflectie1"/>
 
 ## Opdracht 1 reflectie :repeat:
 
@@ -68,7 +79,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   <img src="readme-images/spot7.png" width="325px" alt="uitomst opdracht 1">
 </details>
 
-
+<a name="plan2"/>
 
 ## Opdracht 2 plan
 
@@ -77,9 +88,19 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
   ### Je ontwerp:
-  <img src="readme-images/storyboardfvd.jpg" width="375px" alt="ontwerp opdracht 2">
+  ### desktop:
+  
+  <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/MacBook%20Pro%2014_%20-%201.png" width="375px" alt="ontwerp opdracht 2">
+  
+   <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/MacBook%20Pro%2014_%20-%201.png" width="375px" alt="ontwerp opdracht 2">
 
-
+### mobile:
+   <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/13%20Pro%20-%201.png" height="375px" alt="ontwerp opdracht 2">
+  
+   <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/13%20Pro%20-%202.png" height="375px" alt="ontwerp opdracht 2">
+  
+  <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/13%20Pro%20-%203.png" height="375px" alt="ontwerp opdracht 2">
+  
   ### Je ambitie: 
   Aan deze technieken/punten wil ik werken:
   - Werken met public API
@@ -90,41 +111,98 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 </details>
 
 
+<a name="test2"/>
 
 ## Opdracht 2 test
 
 <details>
   <summary>uitwerken na testen (week 7)</summary>
 
-  Neem minimaal 5 bevindingen op:
+  
 
 
 
   ### Bevinding 1:
-  Cards kunnen niet omdraaien wanneer je erop klikt.
+  * Cards kunnen niet omdraaien wanneer je erop klikt.
 
   #### oplossing:
-  Ik heb met hulp de eventlisterner in mijn API foreach gezet zodat hij het kan zien. Dit komt omdat JS al laad voordat de API data worden in geladen.
+  Ik heb met hulp de eventlisterner in mijn API foreach gezet zodat hij het kan zien. Dit komt omdat JS al laad voordat de API data worden in geladen waardoor het niet werkte.
+  ```
+  const buttonSlide = list.querySelector('li:last-of-type');
+  
+  buttonSlide.addEventListener('click', draaiPhoenixOm);
+  ```
 
 
 
   ### Bevinding 2:
-  Scrollen door de cards lijstjes. 
+  * Scrollen door de cards lijstjes. 
 
   #### oplossing:
   Scrollen door de lijstjes lukte alleen je scrolt de pagina maar dat ik wil dus niet ik wil dat je door een lijstje scrolt zonder dat je de pagina scrolt. Dit heb ik opgelost door overflow: hidden en overflow-y: scroll.
 
 
 
- ### Bevinding 2:
-  Intersection observer
+ ### Bevinding 3:
+  * Intersection observer.
 
   #### oplossing:
   Intersection observer werkte eerst ook niet en dat kwam ook omdat hij het lijstje niet ziet. Ik heb dus hetzelfde opgelost als met de flipcard. Ik heb de hele functie in de API gezet. Dit vind ik trouwens heel lelijk om te doen maar omdat we niet een template engine werken, weet ik niet zo goed hoe het anders moet.
+  
+  ```
+  const options = {
+        root: null,
+        threshold: 0.4,
+        rootMargin: '0px',
+      };
+
+      const observer = new IntersectionObserver(function (entries, observer) {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle('slide-top', entry.isIntersecting);
+        });
+      }, options);
+
+      cards.forEach((card) => {
+        observer.observe(card);
+        card.classList.add('hide');
+      });
+    });
+  ```
+  
+   ### Bevinding 4:
+  * Ik kon geen data selecteren uit een API.
+
+  #### oplossing:
+  Ik moest data uit de API halen maar ik wist niet hoe je een data moet selecteren met een `-` erin zoals `file-name`. Ik heb eerst geprobeerd om de data te formateren in een array met `map()` maar dat ook geen succes. Ik heb uiteindelijk gewoon zitten experimenteren en daarna was het toch gelukt. Ik heb gelost door dit te typen:
+  
+  ```
+   const img = aArt.image_uri;
+   const artDesc = aArt['museum-desc'];
+   const artPrice = aArt['buy-price'];
+  ```
+
+  ### Bevinding 5:
+  * Card drag and drop ziet raar uit
+
+  #### oplossing:
+ Ik voor mijn feature dat je cards kan drag and drop op het scherm alleen dat werkt wel maar het ziet raar uit omdat mijn card bestaat uit een achterkant en voorkant. Wanneer ik een card sleep dan zie ik de achterkant. Ik weet niet hoe je dit moet oplossen. Ik heb dit als code:
+  ```
+  new Sortable(allesLijst, {
+  group: 'shared', // set both lists to same group
+  animation: 150,
+});
+
+new Sortable(favoLijst, {
+  group: 'shared',
+  animation: 150,
+});
+
+  ```
 
 </details>
 
 
+<a name="reflectie2"/>
 
 ## Opdracht 2 reflectie
 
