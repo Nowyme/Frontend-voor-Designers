@@ -143,3 +143,21 @@ new Sortable(favoLijst, {
   group: 'shared',
   animation: 150,
 });
+
+/**********************/
+/* arrow key sidenav */
+/**********************/
+window.addEventListener(
+  'keydown',
+  function (event) {
+    switch (event.code) {
+      case 'ArrowRight':
+        document.querySelector('form button:first-of-type').click();
+        break;
+      case 'ArrowLeft':
+        document.querySelector('form button:last-of-type').click();
+        break;
+    }
+  },
+  true
+);
