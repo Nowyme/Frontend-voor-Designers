@@ -210,17 +210,15 @@ new Sortable(favoLijst, {
   <summary>uitwerken bij afronden opdracht (voor week 8)</summary>
 
   ### Je uitkomst - karakteristiek screenshot(s):
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="uitkomst opdracht 2">
+  <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/eind.png" width="375px" alt="uitkomst opdracht 2">
+  <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/eindmob.png" width="275px" alt="uitkomst opdracht 2">
 
 
   ### Dit ging goed/Heb ik geleerd: 
-  Korte omschrijving met plaatje(s)
+  Ik vond het best moeilijk voor sommige styling met grid etc. Het gelukt om een card te weergeven met de info van de api en je kan flippen.
 
   <img src="readme-images/dummy-plaatje.svg" width="375px" alt="top">
 
 
-  ### Dit was lastig/Is niet gelukt:
-  Korte omschrijving met plaatje(s)
-
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="bummer">
+  
 </details>
