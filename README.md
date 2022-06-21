@@ -215,9 +215,9 @@ new Sortable(favoLijst, {
 
 
   ### Dit ging goed/Heb ik geleerd: 
-  Ik vond het best moeilijk voor sommige styling met grid etc. Het gelukt om een card te weergeven met de info van de api en je kan flippen.
+  Ik vond het best moeilijk voor sommige styling met grid etc. Het is gelukt om een card te weergeven met de info van de api en je kan flippen. Ik vond het zeer leerzaam om met verschillende technieken te werken met drag and drop en nog meer.
 
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="top">
+  <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/listapi.png" width="375px" alt="top">
 
 
   
