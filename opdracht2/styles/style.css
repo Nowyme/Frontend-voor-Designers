@@ -593,3 +593,16 @@ ul:empty::after {
 main > section ul li {
   background-color: white;
 }
+
+main > section ul li {
+  background-color: #ed9117;
+}
+main > section ul li section:first-of-type {
+  background-image: linear-gradient(30deg, transparent, rgb(215, 176, 58) 60%),
+    repeating-linear-gradient(
+      -45deg,
+      rgb(232, 234, 203) 0% 2%,
+      rgb(224, 211, 180) 2% 3%,
+      rgb(204, 152, 56) 1% 4%
+    );
+}
