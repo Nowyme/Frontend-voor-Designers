@@ -225,7 +225,9 @@ new Sortable(favoLijst, {
   Ik vond het best moeilijk voor sommige styling met grid etc. Het is gelukt om een card te weergeven met de info van de api en je kan flippen. Ik vond het zeer leerzaam om met verschillende technieken te werken met drag and drop en nog meer.
 
   <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/listapi.png" width="375px" alt="top">
-
+  
+### Dit ging niet gelukt:
+  Ik wil nog een zoek funcntie toevoegen maar dat lukte helaas niet ik heb de documentatie gevold maar helaas het werkt niet.
 
   
 </details>
