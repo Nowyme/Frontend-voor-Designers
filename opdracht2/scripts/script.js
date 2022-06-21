@@ -41,7 +41,7 @@ function getArt() {
 
       const buttonSlide = list.querySelector('li:last-of-type');
 
-      buttonSlide.addEventListener('click', draaiPhoenixOm);
+      buttonSlide.addEventListener('click', draaiOm);
 
       const cards = document.querySelectorAll('li');
 
@@ -77,21 +77,16 @@ async function getData(URL) {
 
 getArt();
 
-// const dePhoenix = document.querySelector('section.backface-visibility > div');
-
-function draaiPhoenixOm() {
+/****************/
+/* DRAAI OM FUNCTIE */
+/****************/
+function draaiOm() {
   this.classList.toggle('erIsOpMijGeklikt');
 }
 
-// dePhoenix.addEventListener('click', draaiPhoenixOm);
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     dePhoenix.addEventListener("click", draaiPhoenixOm);
-// });
-// for (var i = 0 ; i < dePhoenix.length; i++) {
-//     dePhoenix[i].addEventListener('click' , draaiPhoenixOm , false ) ;
-//  }
-
+/****************/
+/* SIDEBAR ANIMATIE */
+/****************/
 const openButton = document.querySelector('button');
 const form = document.querySelector('form');
 
@@ -107,12 +102,9 @@ function openNav() {
   document.body.style.backgroundColor = 'rgba(0,0,0,0.4)';
 }
 
-// function closeNav() {
-//   document.querySelector('form').style.width = '0';
-//   document.querySelector('body').style.marginLeft = '0';
-//   document.body.style.backgroundColor = 'white';
-// }
-// closeButton.addEventListener('click', closeNav);
+/****************/
+/* SIDEBAR SLIDEIN/ SLIDEOUT */
+/****************/
 
 function openNav() {
   document.querySelector('form').style.width = '40em';
@@ -143,3 +135,21 @@ new Sortable(favoLijst, {
   group: 'shared',
   animation: 150,
 });
+
+/**********************/
+/* ARROWKEY NAVIGATIE */
+/**********************/
+window.addEventListener(
+  'keydown',
+  function (event) {
+    switch (event.code) {
+      case 'ArrowRight':
+        document.querySelector('form button:first-of-type').click();
+        break;
+      case 'ArrowLeft':
+        document.querySelector('form button:last-of-type').click();
+        break;
+    }
+  },
+  true
+);

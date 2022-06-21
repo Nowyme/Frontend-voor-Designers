@@ -42,7 +42,20 @@ summary {
   --blob-color: rgb(249, 214, 191);
   --color-background-black: #1e1c20;
   --time: 0.707s;
+  --box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  --green-light: rgb(130, 204, 163, 0.5);
+  --text-shadow: #8ecfca;
+  --form-background: rgb(255, 255, 255, 0.4);
+  --main-section: rgba(175, 130, 26, 0.2);
+  --main-color-text: #ed9117;
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #003c6d;
+  }
+}
+
 html {
   overflow-x: hidden;
 }
@@ -72,11 +85,8 @@ body > ul li {
   height: 600px;
   width: 600px;
   z-index: -100;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  box-shadow: rgb(249, 214, 191, 0.5) 0px 8px 24px;
-  /* box-shadow: rgb(130, 204, 163, 0.5) 0px 8px 24px; */
-  background-color: var(--blob-color);
-  background-color: rgb(130, 204, 163, 0.5);
+  box-shadow: var(--box-shadow);
+  background-color: var(--green-light);
   animation: blob-animation 40s linear infinite;
 }
 
@@ -90,6 +100,7 @@ body > ul li:last-of-type {
   transform: rotate(145deg);
 }
 
+/* animatie blob effect */
 @keyframes blob-animation {
   0% {
     border-radius: 30% 70% 49% 51% / 30% 40% 60% 20%;
@@ -133,10 +144,6 @@ header ul {
   flex-wrap: nowrap;
   align-items: center;
   padding: 3%;
-  /* background-color: rgb(255, 255, 255);
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  width: 90em;
-  border-radius: 10px; */
 }
 header ul li {
   list-style-type: none;
@@ -153,7 +160,7 @@ h1 {
   bottom: -0.1em;
   font-size: 2.5em;
   color: var(--h1-color);
-  text-shadow: 1px 3px 1px #8ecfca;
+  text-shadow: 1px 3px 1px var(--text-shadow);
 }
 
 /****************/
@@ -161,27 +168,26 @@ h1 {
 /****************/
 
 form {
-  max-width: 40em;
-  /* padding: 1.5em; */
   transition: 0.5s;
-  height: 90vh;
   overflow: hidden;
   overflow-y: scroll;
-
-  background-color: rgb(255, 255, 255, 0.4);
-
+  overflow-x: hidden;
+  background-color: var(--form-background);
   border-radius: 10px;
+
   position: fixed;
-  z-index: 1;
+  max-width: 40em;
+  height: 90vh;
   width: 2em;
   top: 10;
   left: 0;
-  overflow-x: hidden;
+  z-index: 1;
 }
 
 form::-webkit-scrollbar {
   display: none;
 }
+
 .sidenav .closebtn {
   position: absolute;
   top: 0;
@@ -190,6 +196,10 @@ form::-webkit-scrollbar {
   margin-left: 50px;
 }
 
+/*********************/
+/* form */
+/*********************/
+/* form sidebutton */
 form > button {
   height: 50%;
   width: 3em;
@@ -213,158 +223,23 @@ form button:last-of-type img {
   transform: rotate(180deg);
 }
 
-form button:hover {
-  background-color: #017c74;
+form button:hover,
+form button:focus {
+  background-color: var(--h1-color);
 }
 
 form > h2 {
   text-align: center;
   font-size: 2em;
-  color: black;
-  /* position: sticky;
-  top: 0;
-  background-color: white;
-  padding: 2em;
-  border-radius: 10px;
-  margin: 1em;
-  box-shadow: 1px 3px 1px black; */
+  color: var(--h1-color);
 }
-
-/* form cards */
-
-/* main form ul {
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
-  gap: 1rem;
-}
-main ul li {
-  list-style-type: none;
-}
-section.backface-visibility {
-  display: grid;
-}
-section.backface-visibility > div {
-  transform-style: preserve-3d;
-  display: flex;
-  padding: 0.5em;
-  transition: 0.6s;
-  height: 22em;
-  border-radius: 15px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  perspective: 40rem;
-}
-section.backface-visibility > div section:first-of-type {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: -60;
-  border-radius: 15px;
-  background-image: linear-gradient(30deg, transparent, rgb(125, 223, 192) 60%),
-    repeating-linear-gradient(
-      -45deg,
-      rgb(232, 234, 203) 0% 2%,
-      rgb(224, 211, 180) 2% 3%,
-      rgb(143, 188, 159) 1% 4%
-    );
-  backface-visibility: hidden;
-}
-form ul h2 {
-  display: grid;
-  grid-template-columns: min-content;
-  font-size: 1.5em;
-  line-height: 1em;
-  text-transform: capitalize;
-  position: relative;
-  top: -4.5em;
-  left: -3em;
-}
-section.backface-visibility > div section:first-of-type img {
-  position: absolute;
-  right: 1rem;
-  top: 6em;
-  z-index: -50;
-  height: 60%;
-  aspect-ratio: 1/1;
-}
-section.backface-visibility > div section:first-of-type img:nth-of-type(2) {
-  position: absolute;
-  left: 1.3em;
-  top: 17.9em;
-  z-index: -40;
-  height: 15%;
-  aspect-ratio: 1/1;
-}
-section.backface-visibility > div section:first-of-type p {
-  position: absolute;
-  left: 1em;
-  top: 17em;
-  z-index: -50;
-  height: 15%;
-  width: 7em;
-  aspect-ratio: 1/1;
-  text-align: right;
-}
-section.backface-visibility > div section:last-of-type {
-  padding: 0.5em;
-  background-color: rgb(214, 214, 214);
-  border-radius: 0.5em;
-  backface-visibility: hidden;
-  transform: rotatey(180deg);
-  width: 100%;
-  height: 100%;
-  background-image: repeating-linear-gradient(
-    135deg,
-    rgb(244, 192, 139) 0 0.2em,
-    rgb(246, 203, 162) 0.2em 1em
-  );
-}
-section.backface-visibility div.erIsOpMijGeklikt {
-  transform: perspective(100em) rotatey(180deg);
-}
-li.erIsOpMijGeklikt div {
-  transform: perspective(100em) rotatey(180deg);
-}
-main section form li {
-  transform: translateY(2em);
-  transition: 0.5s ease-in;
-}
-.hide {
-  opacity: 0;
-}
-.slide-top {
-  opacity: 1;
-  transform: translateY(0);
-}
-p {
-  padding: 1em;
-  background-color: white;
-  border-radius: 10px;
-} */
-
-/* main section > ul:empty::after {
-  content: "sleep je favo foto's naar dit lijstje (of gebruik de knopjes → boring!)";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 16em;
-  text-align: center;
-} */
 
 main ul {
   display: grid;
-
   grid-gap: 1.5em;
   grid-auto-rows: 1fr;
   padding: 1rem;
-  background: white;
+  background: var(--color-background);
 
   grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
 }
@@ -374,12 +249,12 @@ main ul li {
   width: 100%;
   height: 100%;
   transition: z-index, transform calc(var(--time) / 4);
-  max-height: 25em;
+
   transform-style: preserve-3d;
   display: flex;
   padding: 0.5em;
   transition: 0.6s;
-
+  min-height: 24em;
   border-radius: 15px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -401,27 +276,22 @@ h2::first-letter {
   text-transform: capitalize;
 }
 
-/* form ul li:hover,
-form ul li:focus {
-  transform: perspective(100em) rotatey(180deg);
-} */
-
+/*********************/
+/* card voor en achterkant */
+/*********************/
 main ul li section:first-of-type,
 main ul li section:last-of-type {
   backface-visibility: hidden;
   min-width: 100%;
-  cursor: grab;
   position: relative;
-
-  align-items: center;
-  background-color: white;
   box-sizing: border-box;
   padding: 1em;
   border-radius: 0.25rem;
-
+  align-items: center;
   justify-content: center;
   align-items: center;
 
+  background-color: var(--color-background);
   background-image: linear-gradient(30deg, transparent, rgb(125, 223, 192) 60%),
     repeating-linear-gradient(
       -45deg,
@@ -430,17 +300,16 @@ main ul li section:last-of-type {
       rgb(143, 188, 159) 1% 4%
     );
   backface-visibility: hidden;
+  cursor: grab;
 }
 
 main ul li section:last-of-type {
-  /* transform: rotatey(-180deg) translate(-100%, 0); */
-
   background-color: rgb(214, 214, 214);
   border-radius: 0.5em;
   position: absolute;
 
   backface-visibility: hidden;
-  /* transform: rotatey(180deg) translateX(17.3em); */
+
   transform: rotatey(180deg);
   background-image: repeating-linear-gradient(
     135deg,
@@ -459,7 +328,7 @@ main ul li section:last-of-type {
 
 main li section:last-of-type p {
   font-family: eenfont, sans-serif;
-  background-color: white;
+  background-color: var(--color-background);
   border-radius: 10px;
   padding: 0.7em;
 }
@@ -468,7 +337,9 @@ main li section:last-of-type h3 {
   font-size: 1.5em;
   margin-bottom: -0.2em;
 }
-
+/*********************/
+/* intersection observer */
+/*********************/
 .hide {
   opacity: 0;
 }
@@ -476,20 +347,21 @@ main li section:last-of-type h3 {
 .slide-top {
   opacity: 1;
   transform: translateY(0);
-  /* transition: 0.5s ease-in; */
 }
 main li.erIsOpMijGeklikt {
   transform: perspective(100em) rotatey(180deg);
 }
+
+/*********************/
+/* media vooor kleine schermen */
+/*********************/
 @media only screen and (max-width: 600px) {
   form ul {
     display: grid;
-
     grid-gap: 1.5em;
 
     padding: 1rem;
-    background: white;
-
+    background: var(--color-background);
     grid-template-columns: repeat(auto-fill, minmax(19em, 1fr));
   }
 
@@ -498,7 +370,6 @@ main li.erIsOpMijGeklikt {
     list-style-type: none;
     width: 93vw;
     height: 100%;
-    transition: z-index, transform calc(var(--time) / 4);
 
     transform-style: preserve-3d;
     display: flex;
@@ -510,7 +381,6 @@ main li.erIsOpMijGeklikt {
       rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
     perspective: 40rem;
-
     transform: translateY(2em);
   }
 }
@@ -538,12 +408,12 @@ main section:first-of-type > img:first-of-type {
   position: relative;
   left: 10%;
   aspect-ratio: 1/1;
-  height: 50%;
+  height: 65%;
 }
 main section:first-of-type > img:last-of-type {
-  position: relative;
+  position: absolute;
 
-  height: 10%;
+  height: 20%;
   aspect-ratio: 1/1;
 }
 
@@ -551,12 +421,33 @@ main section:first-of-type p {
   position: relative;
 }
 
+main section:first-of-type > p {
+  position: absolute;
+  bottom: 0;
+  left: 1em;
+  font-size: 1.5em;
+  width: 5em;
+  background-color: var(--color-background);
+  padding: 0.5em;
+  border-radius: 10px;
+
+  text-align: right;
+}
+
+main section:first-of-type img:last-of-type {
+  position: absolute;
+  bottom: 1.8em;
+  left: 1.8em;
+  z-index: 10;
+  height: 12%;
+}
+
 /****************/
 /* main mijn lijstje stylen*/
 /****************/
 
 main > section {
-  background-color: rgb(1, 124, 116, 0.2);
+  background-color: var(--main-section);
   height: 81vh;
 
   transition: margin-left 0.5s;
@@ -567,35 +458,40 @@ main > section {
 main > section h2 {
   position: relative;
   top: 1.2em;
-  color: white;
+  color: var(--main-color-text);
   font-size: 2em;
   text-align: center;
 }
 main > section ul {
-  overflow: hidden;
+  overflow-x: hidden;
   overflow-y: scroll;
-  width: 90vw;
+
   position: relative;
   align-content: center;
   background-color: transparent;
   border-radius: 10px;
-  position: fixed;
-  overflow-y: hidden;
 }
 ul:empty::after {
   content: 'Sleep je Animal Crossing Art collectie naar dit lijstje';
   position: relative;
   top: 1.2em;
   height: 50em;
+  left: 15vw;
   font-size: 1.2em;
   text-align: center;
 }
 main > section ul li {
-  background-color: white;
+  background-color: var(--color-background);
 }
 
 main > section ul li {
-  background-color: #ed9117;
+  background-color: var(--main-color-text);
+}
+
+main > section ul li h2 {
+  color: var(--color-background);
+  position: relative;
+  top: 0;
 }
 main > section ul li section:first-of-type {
   background-image: linear-gradient(30deg, transparent, rgb(215, 176, 58) 60%),
