@@ -40,8 +40,9 @@ function getArt() {
       list.insertAdjacentHTML('beforeend', aArtHTML);
 
       const buttonSlide = list.querySelector('li:last-of-type');
-
-      buttonSlide.addEventListener('click', draaiOm);
+      const button = buttonSlide.querySelector('section > button');
+      button.addEventListener('click', draaiOm);
+      console.log(draaiOm);
 
       const cards = document.querySelectorAll('li');
 
@@ -81,7 +82,7 @@ getArt();
 /* DRAAI OM FUNCTIE */
 /****************/
 function draaiOm() {
-  this.classList.toggle('erIsOpMijGeklikt');
+  this.closest('li').classList.toggle('erIsOpMijGeklikt');
 }
 
 /****************/
