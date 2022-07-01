@@ -28,6 +28,13 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   2. -[Spotify design guide](https://developer.spotify.com/documentation/general/design-and-branding/)-
   3. -[Google fonts](https://fonts.google.com/?query=montserrat)-
   4. -[Spotify afbeelding](https://commons.wikimedia.org/wiki/File:Spotify_logo_without_text.svg)-
+  5. -[JS library drag and drop](https://listjs.com/overview/download/)
+  6. -[Keyboard Event](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code)
+  7. -[Shadow-box](https://getcssscan.com/css-box-shadow-examples)
+  8. -[Border radius](https://9elements.github.io/fancy-border-radius/#65.81.80.23--542.542)
+  9. -[Codepen Sanne](https://codepen.io/shooft)
+  10. -[ANCH API](http://acnhapi.com/)
+  11. -[Flip card](https://www.smashingmagazine.com/2020/02/magic-flip-cards-common-sizing-problem/)
 
 
 <a name="plan1"/>
@@ -210,17 +217,17 @@ new Sortable(favoLijst, {
   <summary>uitwerken bij afronden opdracht (voor week 8)</summary>
 
   ### Je uitkomst - karakteristiek screenshot(s):
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="uitkomst opdracht 2">
+  <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/eind.png" width="375px" alt="uitkomst opdracht 2">
+  <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/eindmob.png" width="275px" alt="uitkomst opdracht 2">
 
 
   ### Dit ging goed/Heb ik geleerd: 
-  Korte omschrijving met plaatje(s)
+  Ik vond het best moeilijk voor sommige styling met grid etc. Het is gelukt om een card te weergeven met de info van de api en je kan flippen. Ik vond het zeer leerzaam om met verschillende technieken te werken met drag and drop en nog meer.
 
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="top">
+  <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/listapi.png" width="375px" alt="top">
+  
+### Dit ging niet gelukt:
+  Ik wil nog een zoek funcntie toevoegen maar dat lukte helaas niet ik heb de documentatie gevold maar helaas het werkt niet.
 
-
-  ### Dit was lastig/Is niet gelukt:
-  Korte omschrijving met plaatje(s)
-
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="bummer">
+  
 </details>
