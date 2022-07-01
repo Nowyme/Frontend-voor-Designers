@@ -40,8 +40,9 @@ function getArt() {
       list.insertAdjacentHTML('beforeend', aArtHTML);
 
       const buttonSlide = list.querySelector('li:last-of-type');
-
-      buttonSlide.addEventListener('click', draaiPhoenixOm);
+      const button = buttonSlide.querySelector('section > button');
+      button.addEventListener('click', draaiOm);
+      console.log(draaiOm);
 
       const cards = document.querySelectorAll('li');
 
@@ -77,21 +78,16 @@ async function getData(URL) {
 
 getArt();
 
-// const dePhoenix = document.querySelector('section.backface-visibility > div');
-
-function draaiPhoenixOm() {
-  this.classList.toggle('erIsOpMijGeklikt');
+/****************/
+/* DRAAI OM FUNCTIE */
+/****************/
+function draaiOm() {
+  this.closest('li').classList.toggle('erIsOpMijGeklikt');
 }
 
-// dePhoenix.addEventListener('click', draaiPhoenixOm);
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     dePhoenix.addEventListener("click", draaiPhoenixOm);
-// });
-// for (var i = 0 ; i < dePhoenix.length; i++) {
-//     dePhoenix[i].addEventListener('click' , draaiPhoenixOm , false ) ;
-//  }
-
+/****************/
+/* SIDEBAR ANIMATIE */
+/****************/
 const openButton = document.querySelector('button');
 const form = document.querySelector('form');
 
@@ -107,12 +103,9 @@ function openNav() {
   document.body.style.backgroundColor = 'rgba(0,0,0,0.4)';
 }
 
-// function closeNav() {
-//   document.querySelector('form').style.width = '0';
-//   document.querySelector('body').style.marginLeft = '0';
-//   document.body.style.backgroundColor = 'white';
-// }
-// closeButton.addEventListener('click', closeNav);
+/****************/
+/* SIDEBAR SLIDEIN/ SLIDEOUT */
+/****************/
 
 function openNav() {
   document.querySelector('form').style.width = '40em';
@@ -145,7 +138,7 @@ new Sortable(favoLijst, {
 });
 
 /**********************/
-/* arrow key sidenav */
+/* ARROWKEY NAVIGATIE */
 /**********************/
 window.addEventListener(
   'keydown',
