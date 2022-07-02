@@ -127,19 +127,38 @@ function openNav() {
 /****************/
 /* SIDEBAR SLIDEIN/ SLIDEOUT */
 /****************/
+const mediaQuery = window.matchMedia('(max-width: 600px)');
 
-function openNav() {
-  document.querySelector('form').style.width = '40em';
-  document.querySelector('main > section').style.marginLeft = '43.3em';
-  document.querySelector('form button').style.marginLeft = '49em';
-  document.querySelector('form button:last-of-type').style.marginLeft = '49em';
-}
+if (mediaQuery.matches) {
+  function openNav() {
+    document.querySelector('form').style.width = '40em';
+    document.querySelector('main > section').style.marginLeft = '43.3em';
+    document.querySelector('form button').style.marginLeft = '31.5em';
+    document.querySelector('form button:last-of-type').style.marginLeft =
+      '31.5em';
+  }
 
-function closeNav() {
-  document.querySelector('form').style.width = '2em';
-  document.querySelector('main > section').style.marginLeft = '2.5em';
-  document.querySelector('form button').style.marginLeft = '0';
-  document.querySelector('form button:last-of-type').style.marginLeft = '0';
+  function closeNav() {
+    document.querySelector('form').style.width = '2em';
+    document.querySelector('main > section').style.marginLeft = '2.5em';
+    document.querySelector('form button').style.marginLeft = '0';
+    document.querySelector('form button:last-of-type').style.marginLeft = '0';
+  }
+} else {
+  function openNav() {
+    document.querySelector('form').style.width = '40em';
+    document.querySelector('main > section').style.marginLeft = '43.3em';
+    document.querySelector('form button').style.marginLeft = '49em';
+    document.querySelector('form button:last-of-type').style.marginLeft =
+      '49em';
+  }
+
+  function closeNav() {
+    document.querySelector('form').style.width = '2em';
+    document.querySelector('main > section').style.marginLeft = '2.5em';
+    document.querySelector('form button').style.marginLeft = '0';
+    document.querySelector('form button:last-of-type').style.marginLeft = '0';
+  }
 }
 
 var favoLijst = document.querySelector('main section ul');
@@ -156,14 +175,15 @@ new Sortable(allesLijst, {
 new Sortable(favoLijst, {
   group: 'shared',
   animation: 150,
-  onAdd: function (event) {
+
+  onAdd: (e) => {
     // als een foto naar de favo lijst wordt gesleept
 
     // de orginele foto - de button weer naar kliks laten luisteren
-    event.clone.addEventListener('click', voegFotoToeAlsFavo);
+    e.clone.addEventListener('click', voegFotoToeAlsFavo);
 
     // nieuwe foto - de button wisselen naar verwijderen
-    vanVoegToeNaarVerwijderButton(event.item);
+    vanVoegToeNaarVerwijderButton(e.item);
   },
 });
 

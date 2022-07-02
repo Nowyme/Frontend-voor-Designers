@@ -167,7 +167,8 @@ h1 {
 /* main stylen */
 /****************/
 
-form {
+form,
+main > ul {
   transition: 0.5s;
   overflow: hidden;
   overflow-y: scroll;
@@ -183,8 +184,12 @@ form {
   left: 0;
   z-index: 1;
 }
+main > ul {
+  height: 0;
+}
 
-form::-webkit-scrollbar {
+form::-webkit-scrollbar,
+main > ul::-webkit-scrollbar {
   display: none;
 }
 
@@ -302,6 +307,7 @@ main ul li section:last-of-type {
     );
   backface-visibility: hidden;
   cursor: grab;
+  transform-style: preserve-3d;
 }
 
 main ul li section:last-of-type {
@@ -369,7 +375,7 @@ main li.erIsOpMijGeklikt {
   main ul li {
     transition: var(--time) transform;
     list-style-type: none;
-    width: 93vw;
+    width: 86vw;
     height: 100%;
 
     transform-style: preserve-3d;
@@ -461,6 +467,7 @@ main > section h2 {
 }
 main > section ul {
   overflow-x: hidden;
+  overflow: hidden;
   overflow-y: scroll;
 
   position: relative;
@@ -476,9 +483,17 @@ ul:empty::after {
   left: 15vw;
   font-size: 1.2em;
   text-align: center;
+  width: 60%;
+  transform: translate(5%);
 }
 main > section ul li {
   background-color: var(--color-background);
+}
+
+@media only screen and (max-width: 600px) {
+  main > section ul li {
+    width: 24em;
+  }
 }
 
 main > section ul li {
@@ -569,4 +584,14 @@ div.cursors div span {
   left: 20%;
   color: rgb(247, 247, 247);
   font-size: 1.2em;
+}
+
+@media only screen and (max-width: 600px) {
+  div.cursors div {
+    display: none;
+  }
+
+  div.cursors div span {
+    display: none;
+  }
 }
