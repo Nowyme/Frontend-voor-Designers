@@ -27,6 +27,7 @@ function getArt() {
 							<h2>${name}</h2>
                             <img src="${img}" alt="${name}">
                             <img src="images/bells.png" alt="bells"><p>${artPrice}</p>
+                            <button aria-labe="maak favoriet" type="button"></button>
 					</section>
                     <section>
                     <h3>Description</h3>
@@ -42,7 +43,6 @@ function getArt() {
       const buttonSlide = list.querySelector('li:last-of-type');
       const button = buttonSlide.querySelector('section > button');
       button.addEventListener('click', draaiOm);
-      console.log(draaiOm);
 
       const cards = document.querySelectorAll('li');
 
@@ -61,6 +61,27 @@ function getArt() {
       cards.forEach((card) => {
         observer.observe(card);
         card.classList.add('hide');
+      });
+
+      var alleVoegToeKnopjes = document.querySelectorAll(
+        'li  section button:last-of-type'
+      );
+      alleVoegToeKnopjes.forEach((eenKnopje) => {
+        // elk knopje in de array luistert naar kliks
+
+        eenKnopje.addEventListener('click', voegFotoToeAlsFavo);
+      });
+      //messagebol
+      cards.forEach((card) => {
+        card.addEventListener('mouseover', (e) => {
+          ballMessage.innerHTML = 'Sleep mij';
+          ball.style.width = '4em';
+        });
+
+        card.addEventListener('mouseout', (e) => {
+          ballMessage.innerHTML = '';
+          ball.style.width = '1em';
+        });
       });
     });
   });
@@ -135,6 +156,15 @@ new Sortable(allesLijst, {
 new Sortable(favoLijst, {
   group: 'shared',
   animation: 150,
+  onAdd: function (event) {
+    // als een foto naar de favo lijst wordt gesleept
+
+    // de orginele foto - de button weer naar kliks laten luisteren
+    event.clone.addEventListener('click', voegFotoToeAlsFavo);
+
+    // nieuwe foto - de button wisselen naar verwijderen
+    vanVoegToeNaarVerwijderButton(event.item);
+  },
 });
 
 /**********************/
@@ -154,3 +184,81 @@ window.addEventListener(
   },
   true
 );
+
+// dit is een array
+var alleVoegToeKnopjes = document.querySelectorAll(
+  'li  section button:last-of-type'
+);
+
+const buttonPlek = document.querySelector('li > section button:last-of-type');
+alleVoegToeKnopjes.forEach((eenKnopje) => {
+  // elk knopje in de array luistert naar kliks
+
+  eenKnopje.addEventListener('click', voegFotoToeAlsFavo);
+});
+// console.log(alleVoegToeKnopjes);
+function voegFotoToeAlsFavo(event) {
+  var deButtonWaaropGekliktIs = this;
+  // opzoeken welke li bij de button hoort
+  var deLiWaarDeButtonInZit = deButtonWaaropGekliktIs.closest('li');
+
+  // de li klonen en achteraan toevoegen aan de favo lijst
+  var fotoKloon = deLiWaarDeButtonInZit.cloneNode(true);
+  favoLijst.appendChild(fotoKloon);
+  // nog wat dingetjes met de toegevoegde li/foto doen
+  vanVoegToeNaarVerwijderButton(fotoKloon);
+}
+
+function vanVoegToeNaarVerwijderButton(deFoto) {
+  // zorgen dat de nieuwe foto in beeld scrollt
+  // deFoto.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+
+  // button wijzigen naar verwijderen
+  // de voegToe button verwijderen
+  var deButtonBijDeFoto = deFoto.querySelector(
+    'main li section:first-of-type button:last-of-type'
+  );
+  deButtonBijDeFoto.remove();
+
+  // een nieuwe button aanmaken
+  var deVerwijderButton = document.createElement('button');
+  // die button laten luisteren naar kliks
+  deVerwijderButton.addEventListener('click', verwijderFoto);
+  // die button toevoegen aan de li
+  deFoto.appendChild(deVerwijderButton);
+}
+
+function verwijderFoto() {
+  var deButtonWaaropGekliktIs = this;
+  // opzoeken welke li bij de button hoort
+  var deLiWaarDeButtonInZit = deButtonWaaropGekliktIs.closest('li');
+  // weg der mee - hatseflats
+  deLiWaarDeButtonInZit.remove();
+}
+
+const cursorTag = document.querySelector('div.cursors');
+
+const ball = cursorTag.querySelector('div');
+
+let currentX = 0;
+let currentY = 0;
+let aimX = 0;
+let aimY = 0;
+let speed = 0.1;
+const animate = (e) => {
+  currentX += (aimX - currentX) * speed;
+  currentY += (aimY - currentY) * speed;
+
+  ball.style.left = currentX + 'px';
+  ball.style.top = currentY + 'px';
+  requestAnimationFrame(animate);
+};
+
+animate();
+
+document.addEventListener('mousemove', (e) => {
+  aimX = e.pageX;
+  aimY = e.pageY;
+});
+
+const ballMessage = cursorTag.querySelector('div span');
