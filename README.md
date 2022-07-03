@@ -228,6 +228,15 @@ new Sortable(favoLijst, {
   
 ### Dit ging niet gelukt:
   Ik wil nog een zoek funcntie toevoegen maar dat lukte helaas niet ik heb de documentatie gevold maar helaas het werkt niet.
+  
+### Feedback mondeling:
+Nadat ik mijn eerste mondeling hebt gedaan, kreeg ik nog feedback van Sanne wat ik nog moet toevoegen en aanpassen. Zo heb ik:
+* Darkmode toegevoegd
+* Loading screen
+* Add button
+* Delete button
+* Kleine scherm ( Werkt alleen met ene refresh)
 
+Daarnaast ook kleine aanpassingen voor de code qualiteit. Zo heb ik div's gebruikt bij styling en ook JS beter geordend.
   
 </details>
