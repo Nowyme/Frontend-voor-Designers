@@ -48,12 +48,39 @@ summary {
   --form-background: rgb(255, 255, 255, 0.4);
   --main-section: rgba(175, 130, 26, 0.2);
   --main-color-text: #ed9117;
+  --form-color: #ffff;
+  --gradient-card: linear-gradient(30deg, transparent, rgb(125, 223, 192) 60%),
+    repeating-linear-gradient(
+      -45deg,
+      rgb(232, 234, 203) 0% 2%,
+      rgb(224, 211, 180) 2% 3%,
+      rgb(143, 188, 159) 1% 4%
+    );
+  --color-white: #ffff;
+  --color-empty: var(--color-background-black);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: #003c6d;
-  }
+/****************/
+/* Darkmode */
+/****************/
+.dark-mode {
+  --color-text: #1bb991;
+  --form-color: rgb(9, 69, 71);
+  --h1-color: #dce8e5;
+  --color-background: rgb(9, 69, 71);
+  --blob-color: rgb(249, 214, 191);
+  --main-section: rgb(164, 103, 33);
+  --main-color-text: #ff9306;
+  --border-card: rgb(28, 217, 170);
+  --gradient-card: linear-gradient(30deg, transparent, rgb(90, 165, 140) 60%),
+    repeating-linear-gradient(
+      -45deg,
+      rgb(204, 208, 140) 0% 2%,
+      rgb(190, 176, 141) 2% 3%,
+      rgb(106, 153, 123) 1% 4%
+    );
+  --color-empty: #fff;
+  transition: 2s;
 }
 
 html {
@@ -72,58 +99,8 @@ body {
   position: relative;
 }
 
-/****************/
-/* Achtergrond blob */
-/****************/
-body > ul {
-  position: relative;
-}
-
-body > ul li {
-  position: absolute;
-  list-style-type: none;
-  height: 600px;
-  width: 600px;
-  z-index: -100;
-  box-shadow: var(--box-shadow);
-  background-color: var(--green-light);
-  animation: blob-animation 40s linear infinite;
-}
-
-body > ul li:first-of-type {
-  top: -17em;
-  left: -3em;
-}
-body > ul li:last-of-type {
-  top: 0;
-  left: 100em;
-  transform: rotate(145deg);
-}
-
-/* animatie blob effect */
-@keyframes blob-animation {
-  0% {
-    border-radius: 30% 70% 49% 51% / 30% 40% 60% 20%;
-  }
-  20% {
-    border-radius: 40% 60% 30% 60% / 50% 60% 30% 40%;
-    transform: translateY(2em);
-  }
-  40% {
-    border-radius: 50% 40% 45% 40% / 55% 70% 20% 30%;
-    transform: translateX(1em);
-  }
-  60% {
-    border-radius: 60% 40% 60% 35% / 50% 35% 65% 40%;
-    transform: translateX(-1em);
-  }
-  80% {
-    border-radius: 40% 60% 30% 40% / 20% 70% 30% 50%;
-    transform: translateY(-2em);
-  }
-  100% {
-    border-radius: 30% 70% 49% 51% / 30% 40% 60% 20%;
-  }
+h2 {
+  color: var(--color-white);
 }
 
 /****************/
@@ -131,25 +108,18 @@ body > ul li:last-of-type {
 /****************/
 header {
   display: flex;
-  align-items: center;
-
-  height: 15vh;
-  width: 100vw;
-
-  margin-top: 1em;
-}
-
-header ul {
-  display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  height: 15vh;
+  width: 100vw;
+  margin-top: 1em;
   padding: 3%;
 }
-header ul li {
-  list-style-type: none;
+
+header a {
   margin: 1em;
 }
-header ul li img {
+header img {
   width: 10em;
 }
 h1 {
@@ -163,6 +133,20 @@ h1 {
   text-shadow: 1px 3px 1px var(--text-shadow);
 }
 
+/* Darkmode button*/
+header button {
+  border: none;
+  padding: 1em;
+  margin-left: auto;
+  border-radius: 5px;
+  background-color: var(--main-color-text);
+  color: var(--color-white);
+}
+
+header button:hover {
+  background-color: var(--color-background-black);
+}
+
 /****************/
 /* main stylen */
 /****************/
@@ -173,7 +157,7 @@ main > ul {
   overflow: hidden;
   overflow-y: scroll;
   overflow-x: hidden;
-  background-color: var(--form-background);
+  background-color: var(--form-color);
   border-radius: 10px;
 
   position: fixed;
@@ -217,6 +201,7 @@ form > button {
   background-color: var(--color-text);
   border-radius: 5px;
 }
+
 form button:last-of-type {
   top: 60%;
 }
@@ -237,7 +222,28 @@ form > h2 {
   font-size: 2em;
   color: var(--h1-color);
 }
+form ul:empty::after {
+  content: 'klik op knopje om mg te laden';
+  position: relative;
+}
+main > button {
+  font-size: 1em;
+  border: none;
+  padding: 1em;
+  border-radius: 5px;
+  position: absolute;
+  display: none;
+  top: 11em;
+  left: 1.5em;
+  z-index: 60;
+  background-color: var(--main-color-text);
+  color: var(--color-white);
+}
+main > button:hover {
+  background-color: var(--color-text);
+}
 
+/* favolijst */
 main ul {
   display: grid;
   grid-gap: 1.5em;
@@ -247,13 +253,22 @@ main ul {
 
   grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
 }
+
+form ul::after {
+  content: 'Klik op de haal Artcrossing om alle Art list op te halen!';
+  position: relative;
+  top: 10em;
+
+  left: 5%;
+}
+
 main ul li {
   transition: var(--time) transform;
   list-style-type: none;
   width: 100%;
   height: 100%;
   transition: z-index, transform calc(var(--time) / 4);
-
+  background-color: var(--color-white);
   transform-style: preserve-3d;
   display: flex;
   padding: 0.5em;
@@ -293,18 +308,9 @@ main ul li section:last-of-type {
   box-sizing: border-box;
   padding: 1em;
   border-radius: 0.25rem;
-  align-items: center;
-  justify-content: center;
-  align-items: center;
 
   background-color: var(--color-background);
-  background-image: linear-gradient(30deg, transparent, rgb(125, 223, 192) 60%),
-    repeating-linear-gradient(
-      -45deg,
-      rgb(232, 234, 203) 0% 2%,
-      rgb(224, 211, 180) 2% 3%,
-      rgb(143, 188, 159) 1% 4%
-    );
+  background-image: var(--gradient-card);
   backface-visibility: hidden;
   cursor: grab;
   transform-style: preserve-3d;
@@ -335,7 +341,7 @@ main ul li section:last-of-type {
 
 main li section:last-of-type p {
   font-family: eenfont, sans-serif;
-  background-color: var(--color-background);
+  background-color: var(--color-white);
   border-radius: 10px;
   padding: 0.7em;
 }
@@ -357,6 +363,263 @@ main li section:last-of-type h3 {
 }
 main li.erIsOpMijGeklikt {
   transform: perspective(100em) rotatey(180deg);
+}
+
+main li section:first-of-type button:first-of-type {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  width: 2em;
+  aspect-ratio: 1/1;
+  font-size: 1em;
+  transition: 0.3s;
+  font-weight: 400;
+}
+
+main li section:first-of-type button:hover {
+  background-color: #d5e9e3a1;
+  border: 2px solid var(--h1-color);
+  transform: scale(1.4);
+}
+
+main form section:first-of-type > h2 {
+  position: relative;
+  z-index: 30;
+  width: 50%;
+  top: 0;
+  font-size: 2.3em;
+  margin-left: 0.3em;
+  text-shadow: 2px 2px var(--color-background-black);
+  color: var(--color-white);
+}
+
+main section:first-of-type > img:first-of-type {
+  position: absolute;
+  left: 0.7em;
+  top: 3em;
+  aspect-ratio: 1/1;
+  height: 16em;
+}
+
+main section:first-of-type > img:last-of-type {
+  position: absolute;
+
+  height: 20%;
+  aspect-ratio: 1/1;
+}
+
+main section:first-of-type > p {
+  position: absolute;
+  bottom: 0em;
+  right: 3.5em;
+  font-size: 1.5em;
+  width: 5em;
+  background-color: var(--color-white);
+  padding: 0.5em;
+  border-radius: 10px;
+
+  text-align: right;
+}
+
+main section:first-of-type img:last-of-type {
+  position: absolute;
+  bottom: 1.8em;
+  left: 5em;
+  z-index: 10;
+  height: 12%;
+}
+
+/****************/
+/* main mijn lijstje stylen*/
+/****************/
+
+main > section {
+  background-color: var(--main-section);
+  height: 89vh;
+  margin-top: -2em;
+  transition: margin-left 0.5s;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+main > section h2 {
+  position: relative;
+  top: 1.2em;
+  color: var(--main-color-text);
+  font-size: 2em;
+  text-align: center;
+}
+main > section ul {
+  overflow-x: hidden;
+  overflow: hidden;
+  overflow-y: scroll;
+
+  position: relative;
+  align-content: center;
+  background-color: transparent;
+  border-radius: 10px;
+}
+main ul:empty::after {
+  content: 'Sleep je Animal Crossing Art collectie naar dit lijstje';
+  position: relative;
+  top: 1.2em;
+  height: 50em;
+  left: 15vw;
+  font-size: 1.2em;
+  text-align: center;
+  width: 60%;
+  transform: translate(5%);
+  color: var(--color-empty);
+
+  animation: jump 1s infinite ease-in;
+  animation-delay: 6s;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0em);
+  }
+  50% {
+    transform: translateY(-0.5em);
+  }
+  100% {
+    transform: translateY(0em);
+  }
+}
+main > section ul li {
+  background-color: var(--color-background);
+}
+
+main > section ul li {
+  background-color: var(--main-color-text);
+}
+
+main > section ul li h2 {
+  position: relative;
+  z-index: 30;
+  width: 50%;
+  top: 0;
+  font-size: 2.3em;
+  margin-left: 0.3em;
+  text-shadow: 2px 2px var(--color-background-black);
+  color: var(--color-white);
+}
+main > section ul li section:first-of-type {
+  background-image: linear-gradient(30deg, transparent, rgb(215, 176, 58) 60%),
+    repeating-linear-gradient(
+      -45deg,
+      rgb(232, 234, 203) 0% 2%,
+      rgb(224, 211, 180) 2% 3%,
+      rgb(204, 152, 56) 1% 4%
+    );
+}
+
+/****************/
+/* add button*/
+/****************/
+
+li > section:first-of-type button:last-of-type {
+  position: absolute;
+  background-color: white;
+  top: 80%;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.5em;
+
+  transition: 0.1s;
+}
+form li button:last-of-type:after {
+  content: '☑️';
+}
+
+form li button:last-of-type:hover:after {
+  content: '✅';
+}
+/****************/
+/* delete button */
+/****************/
+main ul li > button:last-of-type::after {
+  content: '❌';
+}
+main ul li > button:last-of-type {
+  position: absolute;
+  background-color: white;
+  top: 80%;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.5em;
+
+  transition: 0.1s;
+}
+main ul li > button:last-of-type:hover {
+  font-size: 2em;
+}
+/****************/
+/* Loading */
+/****************/
+
+form > div {
+  position: absolute;
+  left: 3vw;
+  top: 25vh;
+
+  opacity: 0;
+  transition: 0.15s;
+}
+
+form > div.loading {
+  opacity: 1;
+  z-index: 30;
+  transition: 0.3s 0.5s;
+}
+form > div img {
+  animation: loader 3s linear infinite;
+  transform: rotateY(45deg);
+}
+@keyframes loader {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/****************/
+/* cursor */
+/****************/
+
+div.cursors div {
+  position: absolute;
+  top: 300px;
+  left: 300px;
+  width: 1em;
+  aspect-ratio: 1/1;
+  background-color: var(--main-color-text);
+  border-radius: 50%;
+  z-index: 1000;
+  pointer-events: none;
+  transform: translate(-70%, -120%);
+  opacity: 0.8;
+}
+
+div.cursors div span {
+  position: absolute;
+  top: 30%;
+  width: 2em;
+  text-align: center;
+  left: 20%;
+  color: rgb(247, 247, 247);
+  font-size: 1.2em;
 }
 
 /*********************/
@@ -390,208 +653,29 @@ main li.erIsOpMijGeklikt {
     perspective: 40rem;
     transform: translateY(2em);
   }
-}
-main li section:first-of-type button:first-of-type {
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  background-color: transparent;
-  border: none;
-  border-radius: 5px;
-  width: 2em;
-  aspect-ratio: 1/1;
-  font-size: 1em;
-  transition: 0.3s;
-  font-weight: 400;
-}
-
-main li section:first-of-type button:hover {
-  background-color: #d5e9e3a1;
-  border: 2px solid var(--h1-color);
-  transform: scale(1.4);
-}
-
-main section:first-of-type > img:first-of-type {
-  position: relative;
-  left: 10%;
-  aspect-ratio: 1/1;
-  height: 65%;
-}
-main section:first-of-type > img:last-of-type {
-  position: absolute;
-
-  height: 20%;
-  aspect-ratio: 1/1;
-}
-
-main section:first-of-type > p {
-  position: absolute;
-  bottom: 0em;
-  right: 3.5em;
-  font-size: 1.5em;
-  width: 5em;
-  background-color: var(--color-background);
-  padding: 0.5em;
-  border-radius: 10px;
-
-  text-align: right;
-}
-
-main section:first-of-type img:last-of-type {
-  position: absolute;
-  bottom: 1.8em;
-  left: 5em;
-  z-index: 10;
-  height: 12%;
-}
-
-/****************/
-/* main mijn lijstje stylen*/
-/****************/
-
-main > section {
-  background-color: var(--main-section);
-  height: 81vh;
-
-  transition: margin-left 0.5s;
-  border-radius: 10px;
-  z-index: 1;
-}
-
-main > section h2 {
-  position: relative;
-  top: 1.2em;
-  color: var(--main-color-text);
-  font-size: 2em;
-  text-align: center;
-}
-main > section ul {
-  overflow-x: hidden;
-  overflow: hidden;
-  overflow-y: scroll;
-
-  position: relative;
-  align-content: center;
-  background-color: transparent;
-  border-radius: 10px;
-}
-ul:empty::after {
-  content: 'Sleep je Animal Crossing Art collectie naar dit lijstje';
-  position: relative;
-  top: 1.2em;
-  height: 50em;
-  left: 15vw;
-  font-size: 1.2em;
-  text-align: center;
-  width: 60%;
-  transform: translate(5%);
-}
-main > section ul li {
-  background-color: var(--color-background);
-}
-
-@media only screen and (max-width: 600px) {
-  main > section ul li {
-    width: 24em;
-  }
-}
-
-main > section ul li {
-  background-color: var(--main-color-text);
-}
-
-main > section ul li h2 {
-  color: var(--color-background);
-  position: relative;
-  top: 0;
-}
-main > section ul li section:first-of-type {
-  background-image: linear-gradient(30deg, transparent, rgb(215, 176, 58) 60%),
-    repeating-linear-gradient(
-      -45deg,
-      rgb(232, 234, 203) 0% 2%,
-      rgb(224, 211, 180) 2% 3%,
-      rgb(204, 152, 56) 1% 4%
-    );
-}
-
-/****************/
-/* add button*/
-/****************/
-
-li > section button:last-of-type {
-  position: absolute;
-  background-color: white;
-  top: 80%;
-  right: 1.5rem;
-  width: 3rem;
-  height: 3rem;
-  border: none;
-  border-radius: 10px;
-  font-size: 1.5em;
-
-  transition: 0.1s;
-}
-form li button:last-of-type:after {
-  content: '☑️';
-}
-
-form li button:last-of-type:hover:after {
-  content: '✅';
-}
-main ul li > button:last-of-type::after {
-  content: '❌';
-}
-main ul li > button:last-of-type {
-  position: absolute;
-  background-color: white;
-  top: 80%;
-  right: 1.5rem;
-  width: 3rem;
-  height: 3rem;
-  border: none;
-  border-radius: 10px;
-  font-size: 1.5em;
-
-  transition: 0.1s;
-}
-main ul li > button:last-of-type:hover {
-  font-size: 2em;
-}
-/****************/
-/* cursorsn*/
-/****************/
-
-div.cursors div {
-  position: absolute;
-  top: 300px;
-  left: 300px;
-  width: 1em;
-  aspect-ratio: 1/1;
-  background-color: var(--main-color-text);
-  border-radius: 50%;
-  z-index: 1000;
-  pointer-events: none;
-  transform: translate(-70%, -120%);
-  opacity: 0.8;
-}
-
-div.cursors div span {
-  position: absolute;
-  top: 30%;
-  width: 2em;
-  text-align: center;
-  left: 20%;
-  color: rgb(247, 247, 247);
-  font-size: 1.2em;
-}
-
-@media only screen and (max-width: 600px) {
   div.cursors div {
     display: none;
   }
 
   div.cursors div span {
     display: none;
+  }
+
+  main > section ul li {
+    width: 24em;
+  }
+  main section:first-of-type img:last-of-type {
+    position: absolute;
+    bottom: 1.8em;
+    left: 10.5em;
+    z-index: 10;
+    height: 12%;
+  }
+  main section:first-of-type > img:first-of-type {
+    position: absolute;
+    left: 3.5em;
+    top: 2.5em;
+    aspect-ratio: 1/1;
+    height: 16em;
   }
 }
