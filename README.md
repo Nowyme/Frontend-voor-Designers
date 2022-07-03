@@ -238,5 +238,15 @@ Nadat ik mijn eerste mondeling hebt gedaan, kreeg ik nog feedback van Sanne wat 
 * Kleine scherm ( Werkt alleen met ene refresh)
 
 Daarnaast ook kleine aanpassingen voor de code qualiteit. Zo heb ik div's gebruikt bij styling en ook JS beter geordend.
+
+### Final schermen:
+Scherm lightmode
+
+ <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/finalscherm.png" width="375px" alt="storyboard voor opdracht 1">
+ 
+ Scherm darkmode
+ 
+  <img src="https://github.com/Nowyme/Frontend-voor-Designers/blob/master/readme-images/darkfinal.png" width="375px" alt="storyboard voor opdracht 1">
+
   
 </details>
